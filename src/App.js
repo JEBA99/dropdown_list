@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import fetchQuote from './fetchQuote';
-// import testjson from './test_qf.json';
-import logo from './logo.svg';
-
 import './App.css';
 
 function App() {
