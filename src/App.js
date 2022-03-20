@@ -10,7 +10,7 @@ function App() {
   const [receviedJson, setReceivedJson] = useState([]);
   const [users, setUsers] = useState([]);
   const [adp, setAdp] = useState([]);
-  
+   
 
   const getJsonData = async () => {
     const { data } = await axios.get('./test_qf.json');
@@ -23,11 +23,9 @@ function App() {
   },[])
 
   function populateUsers(asid) {
-    console.log("selected asn", asid);
       receviedJson.map((asn) => {
         if(asn.asid === asid) {
-          setUsers(Object.assign([], asn.unit));
-          
+          setUsers(Object.assign([], asn.unit));          
         }
       })     
   }
@@ -35,8 +33,7 @@ function App() {
   function populateAdp(userid) {
       users.map((user) => {
         if(user.uid === userid) {
-          setAdp(Object.assign([], user.ap));
-          
+          setAdp(Object.assign([], user.ap));          
         }
       })
   }
@@ -44,8 +41,7 @@ function App() {
    return (
      
     <div className="App">
-        <label></label>   
-        <select className="dropdown" onChange={(event)=>{ populateUsers(event.target.value)}}>
+        <select className="dropdown" onChange={(event)=>{ setUsers(Object.assign([]));  setAdp(Object.assign([])); populateUsers(event.target.value)}}>
           {receviedJson.map((asn) => { 
           return(
               <option key={asn.asid} value={asn.asid}>{asn.asn}</option>
